@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 public class JdbcHelper {
     public static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    public static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=LibrayEbook;encrypt=false;trustServerCertificate=true;";
+    public static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=LibraryEbooks;encrypt=false;trustServerCertificate=true;";
     public static String username = "sa";
     public static String password = "123";
     
