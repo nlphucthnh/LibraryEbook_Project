@@ -4,7 +4,6 @@
  */
 package com.ebook.mainFrame;
 
-
 import com.ebooks.dao.TaiKhoanDAO;
 import com.ebooks.helper.DialogHelper;
 import java.awt.Color;
@@ -21,7 +20,6 @@ import java.awt.event.KeyEvent;
  */
 public class LogInDiaLog extends javax.swing.JDialog {
 
-  
     public static String tendangNhapApp;
 
     /**
@@ -33,6 +31,7 @@ public class LogInDiaLog extends javax.swing.JDialog {
         setBackground(new Color(0, 0, 0, 0));
         setIconImage(ShareHelper.APP_ICON);
     }
+    TaiKhoanDAO tkDao = new TaiKhoanDAO();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -221,19 +220,19 @@ public class LogInDiaLog extends javax.swing.JDialog {
     }//GEN-LAST:event_jLabel9AncestorAdded
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-//        DangNhap();
+        DangNhap();
 
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void txtMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-//            DangNhap();
+            DangNhap();
         }
     }//GEN-LAST:event_txtMatKhauKeyPressed
 
     private void txtTenDangNhapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTenDangNhapKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-//            DangNhap();
+            DangNhap();
         }
     }//GEN-LAST:event_txtTenDangNhapKeyPressed
 
@@ -246,11 +245,11 @@ public class LogInDiaLog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDangNhapKeyPressed
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
-        jLabel9.setForeground(new Color(87,170,100));
+        jLabel9.setForeground(new Color(87, 170, 100));
     }//GEN-LAST:event_jLabel9MouseEntered
 
     private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
-        jLabel9.setForeground(new Color(87,190,110));
+        jLabel9.setForeground(new Color(87, 190, 110));
     }//GEN-LAST:event_jLabel9MouseExited
 
     /**
@@ -282,6 +281,10 @@ public class LogInDiaLog extends javax.swing.JDialog {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -298,50 +301,42 @@ public class LogInDiaLog extends javax.swing.JDialog {
         });
     }
 
-//  public void DangNhap() {
-//        if (UtilityHelper.checkNullText(lblTenDangNhap, txtTenDangNhap)) {
-//            String tenDangNhap = txtTenDangNhap.getText();
-//            if (UtilityHelper.checkNullText(lblMatKhau, txtMatKhau) && UtilityHelper.checkPass(lblMatKhau, txtMatKhau)) {
-//                String matKhau = new String(txtMatKhau.getPassword());
-//                TaiKhoan taiKhoan = tkDao.findById(tenDangNhap);
-//                QuanTriVien quanTri = qtvDao.findById(tenDangNhap);
-//                if (taiKhoan == null) {
-//                    DialogHelper.alert(this, "Sai Tên Đăng Nhập");
-//                    txtTenDangNhap.setText("");
-//                    txtTenDangNhap.requestFocus();
-//                    return;
-//                } else if (!matKhau.equals(taiKhoan.getMatKhau())) {
-//                    DialogHelper.alert(this, "Sai Mật Khẩu");
-//                    txtMatKhau.setText("");
-//                    txtMatKhau.requestFocus();
-//                    return;
-//                } else {
-//                    if (quanTri == null) {
-//                        ShareHelper.USER = taiKhoan;
-//                        tendangNhapApp = taiKhoan.getTenDangNhap();
-//                        ShareHelper.BOSS = null;
-//                        DialogHelper.alert(this, "Đăng Nhập Thành Công");
-//                        if (taiKhoan.getThoiLuong().getTime() == -28800000) {
-//                            DialogHelper.alert(this, "Tài Khoản Đã Hết Thời Gian Thuê");
-//                            System.exit(0);
-//                        }
-//                        this.dispose();
-//                    } else {
-//                        if (taiKhoan.getTenDangNhap().equals(quanTri.getTenDangNhap())) {
-//                            ShareHelper.BOSS = quanTri;
-//                            ShareHelper.USER = taiKhoan;
-//                            DialogHelper.alert(this, "Quản Trị Viên Đăng Nhập Thành Công");
-//                            if (taiKhoan.getThoiLuong().getTime() == -28800000) {
-//                                DialogHelper.alert(this, "Tài Khoản Đã Hết Thời Gian Thuê");
-//                                System.exit(0);
-//                            }
-//                            this.dispose();
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+    public void DangNhap() {
+        if (UtilityHelper.checkNullText(lblTenDangNhap, txtTenDangNhap)) {
+            String tenDangNhap = txtTenDangNhap.getText();
+            if (UtilityHelper.checkNullText(lblMatKhau, txtMatKhau) && UtilityHelper.checkPass(lblMatKhau, txtMatKhau)) {
+                String matKhau = new String(txtMatKhau.getPassword());
+                TaiKhoan taiKhoan = tkDao.findById(tenDangNhap);
+
+                if (taiKhoan == null) {
+                    DialogHelper.alert(this, "Sai Tên Đăng Nhập Hoặc Mật Khẩu?");
+                    txtTenDangNhap.setText("");
+                    txtTenDangNhap.requestFocus();
+                    return;
+                } else if (!matKhau.equals(taiKhoan.getMatKhau())) {
+                    DialogHelper.alert(this, "Sai Tên Đăng Nhập Hoặc Mật Khẩu?");
+                    txtMatKhau.setText("");
+                    txtMatKhau.requestFocus();
+                    return;
+                } else {
+
+                    if (taiKhoan.isVaiTro() == true) {
+
+                        ShareHelper.USER = taiKhoan;
+                        DialogHelper.alert(this, "Admin Ðăng Nhập Thành Công!");
+
+                        this.dispose();
+
+                    } else {
+                        ShareHelper.USER = taiKhoan;
+                        DialogHelper.alert(this, "User Ðăng Nhập Thành Công!");
+
+                        this.dispose();
+                    }
+                }
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.ebooks.Compoment.MyButton btnDangNhap;
     private javax.swing.ButtonGroup buttonGroup1;

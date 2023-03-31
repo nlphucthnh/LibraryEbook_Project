@@ -78,6 +78,8 @@ public class mainFrame extends javax.swing.JFrame {
         mnMuonSach = new javax.swing.JMenu();
         mnitemLichSuMS = new javax.swing.JMenuItem();
         mnitemTroGiup = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -242,6 +244,13 @@ public class mainFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(mnMuonSach);
 
+        jMenu1.setText("jMenu1");
+
+        jMenuItem1.setText("jMenuItem1");
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -304,7 +313,9 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
